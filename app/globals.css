@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+* {
+  padding: 0;
+  margin: 0;
+  overscroll-behavior: none;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+  transition: color 250ms ease-in-out;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+html, body {
+  background-color: black;
+  color: white;
+}
