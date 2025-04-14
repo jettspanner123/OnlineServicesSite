@@ -1,11 +1,31 @@
 import {BaseModel} from "@/app/models/DataModels/BaseModel";
 import {v4 as UUID} from "uuid";
 
-namespace DataModel {
+export namespace DataModel {
 
-    enum UserType {
+    export enum UserType {
         Customer, Provider, Admin
     }
+
+    export enum RequestState {
+        Pending,
+        Accepted,
+        Rejected,
+        Failed
+    }
+
+    export enum ServiceState {
+        NotStarted,
+        OnGoing,
+        Ended
+    }
+
+    export enum LocationType {
+        AtHome,
+        Outdoor,
+        PersonalSpace
+    }
+
     export class UserLocation implements BaseModel.UserLocation {
         public area: string;
         public building: string;
@@ -67,8 +87,65 @@ namespace DataModel {
             this.location = location;
             this.rating = rating;
         }
-
-
     }
+
+    export class ServiceSlot implements BaseModel.ServiceSlot {
+        fromDate: string;
+        toDate: string;
+        fromTime: string;
+        toTime: string;
+
+        constructor(fromDate: string, toDate: string, fromTime: string, toTime: string) {
+            this.fromDate = fromDate;
+            this.toDate = toDate;
+            this.fromTime = fromTime;
+            this.toTime = toTime;
+        }
+    }
+
+    export class Service implements BaseModel.Service {
+         id: string;
+         providerId: string;
+         name: string;
+         description: string;
+         address: ServiceLocation;
+         locationType: LocationType;
+         perHourRating: number;
+         image?: string;
+         dateAndTimings: ServiceSlot;
+         serviceState: ServiceState;
+
+         // @ts-ignore
+        constructor(providerId: string, name: string, description: string, address: ServiceLocation, locationType: LocationType, perHourRating: number, image?: string, dateAndTimings: ServiceSlot, serviceState: ServiceState) {
+             this.id = UUID();
+             this.providerId = providerId;
+             this.name = name;
+             this.description = description;
+             this.address = address;
+             this.locationType = locationType;
+             this.perHourRating = perHourRating;
+             this.image = image;
+             this.dateAndTimings = dateAndTimings;
+             this.serviceState = serviceState;
+         }
+    }
+
+    export class Request implements BaseModel.Request {
+        id: string;
+        fromUserId: string;
+        toUserId: string;
+        forServiceId: string;
+        requestState: RequestState;
+
+        constructor(fromUserId: string, toUserId: string, forServiceId: string, requestState: RequestState) {
+            this.id = UUID();
+            this.fromUserId = fromUserId;
+            this.toUserId = toUserId;
+            this.forServiceId = forServiceId;
+            this.requestState = requestState;
+        }
+    }
+
+
 
 }

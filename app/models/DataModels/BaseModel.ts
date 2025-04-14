@@ -42,10 +42,10 @@ export namespace BaseModel {
     }
 
     export interface ServiceSlot {
-        date: string;
+        fromDate: string;
+        toDate: string;
         fromTime: string;
         toTime: string;
-        breakTime: string;
     }
 
     export enum ServiceState {
@@ -61,7 +61,7 @@ export namespace BaseModel {
         description: string;
         address: ServiceLocation;
         locationType: LocationType;
-        perHourRating: Number;
+        perHourRating: number;
         image?: string;
         dateAndTimings: ServiceSlot;
         serviceState: ServiceState;
@@ -75,6 +75,7 @@ export namespace BaseModel {
     }
 
     export interface Request {
+        id: string;
         fromUserId: string;
         toUserId: string;
         forServiceId: string;
