@@ -3,8 +3,8 @@ import React from "react";
 import ApplicationThemeHelper, {ApplicationThemeStore} from "@/app/models/ThemeStore";
 import ApplicationNavigationBar from "@/app/components/ApplicationNavigationBar";
 import {ApplicationHelper, ApplicationHelperTypes} from "@/app/models/ApplicationHelper";
-import { BaseModel } from "@/app/models/DataModels/BaseModel"
-import { motion } from "motion/react";
+import {BaseModel} from "@/app/models/DataModels/BaseModel"
+import {motion} from "motion/react";
 
 export default function Home(): React.JSX.Element {
 
@@ -27,7 +27,7 @@ export default function Home(): React.JSX.Element {
                 background: `radial-gradient(circle at calc(50% + ${transformedMousePosition / 4}px) 0%, #222222 0%, ${applicationThemeHelper.getBackgroundColor()} 100%)`,
                 color: applicationThemeHelper.getForegroundColor(),
                 paddingTop: ApplicationHelper.current.homeScreenVerticalPadding,
-            }} className={`min-h-screen max-h-screen w-screen flex justify-center`}>
+            }} className={`min-h-screen max-h-screen w-screen flex flex-col items-center`}>
 
                 <motion.section
                     style={{
@@ -50,15 +50,38 @@ export default function Home(): React.JSX.Element {
                     }}
                     className={`flex flex-col items-center justify-start`}>
 
-                    <h1 className={`font-bold text-white/80 text-[2rem] text-center`}>Your Complete Local Area Services</h1>
-                    <h3 style={{ marginTop: "1rem"}} className={`font-semibold text-white/30 text-[1rem] text-center`}>Vercel provides the developer tools and cloud infrastructure</h3>
-                    <h3 className={`font-semibold text-white/30 text-[1rem] text-center`}>to build, scale, and secure a faster, more personalized web.</h3>
+                    <h1 className={`font-bold text-white/80 text-[2rem] text-center`}>Your Complete Local Area
+                        Services</h1>
+                    <h3 style={{marginTop: "1rem"}}
+                        className={`font-semibold text-white/30 text-[1rem] text-center`}>Vercel provides the developer
+                        tools and cloud infrastructure</h3>
+                    <h3 className={`font-semibold text-white/30 text-[1rem] text-center`}>to build, scale, and secure a
+                        faster, more personalized web.</h3>
 
 
-                    <div style={{ marginTop: "1rem"}} className={`flex gap-[1rem]`}>
-                        <ApplicationHomePageButton styles={{ background: "white", color: "black" }} text={"Start Questionnaire"} action={() => {}} />
-                        <ApplicationHomePageButton styles={{ background: ApplicationHelper.current.royalGoldenGrey, border: "0.75px solid rgba(255,255,255,10)"}} text={"Log In / Sign Up"} action={() => {}} />
+                    <div style={{marginTop: "1rem"}} className={`flex gap-[1rem]`}>
+                        <ApplicationHomePageButton styles={{background: "white", color: "black"}}
+                                                   text={"Start Questionnaire"} action={() => {
+                        }}/>
+                        <ApplicationHomePageButton styles={{
+                            background: ApplicationHelper.current.royalGoldenGrey,
+                            border: "0.75px solid rgba(255,255,255,10)"
+                        }} text={"Log In / Sign Up"} action={() => {
+                        }}/>
                     </div>
+
+                </motion.section>
+
+
+
+                <motion.section
+                    style={{
+                        width: "60%",
+                        height: "20rem",
+                        marginTop: "4rem",
+                    }}
+                    className={``}
+                >
 
                 </motion.section>
             </main>
