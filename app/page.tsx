@@ -1,9 +1,11 @@
 "use client";
 import React from "react";
+import "@/app/globals.css";
 import ApplicationThemeHelper, {ApplicationThemeStore} from "@/app/models/ThemeStore";
 import ApplicationNavigationBar from "@/app/components/ApplicationNavigationBar";
 import {ApplicationHelper, ApplicationHelperTypes} from "@/app/models/ApplicationHelper";
-import {motion} from "motion/react";
+import {motion, useMotionValueEvent} from "motion/react";
+import {useScroll} from "framer-motion";
 
 export default function Home(): React.JSX.Element {
 
@@ -22,7 +24,6 @@ export default function Home(): React.JSX.Element {
     const mousePosition: ApplicationHelperTypes.MousePosition = ApplicationHelper.current.getMousePosition();
     const transformedMousePosition: number = (mousePosition.x - ApplicationHelper.current.getWindowWidth() / 2);
 
-    const secondSectionReference: React.RefObject<HTMLElement | null> = React.useRef(null);
 
     return (
         <React.Fragment>
@@ -94,7 +95,17 @@ export default function Home(): React.JSX.Element {
 
 
                 {/*second section*/}
-                <section ref={secondSectionReference} className={`h-screen w-screen bg-blue-300`}>
+                <section className={`h-screen w-screen bg-blue-300`}>
+
+
+
+
+                    {/*scrolling div*/}
+                    <div className={`w-[150vw] h-[5rem] flex justify-start items-center bg-white`}>
+                        <h1 style={{
+                            fontFamily: "Oswald"
+                        }} className={`text-[#222222]`}>Hair Cutting</h1>
+                    </div>
 
                 </section>
 
