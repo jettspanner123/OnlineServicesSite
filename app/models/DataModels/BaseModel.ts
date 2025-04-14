@@ -37,7 +37,7 @@ export namespace BaseModel {
         role: UserType;
         createdAt: string;
         bookMarkServices: Array<string>;
-        location: string;
+        location: UserLocation;
         rating?: number;
     }
 
