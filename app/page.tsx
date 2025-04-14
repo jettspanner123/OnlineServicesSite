@@ -14,6 +14,7 @@ export default function Home(): React.JSX.Element {
     const mousePosition: ApplicationHelperTypes.MousePosition = ApplicationHelper.current.getMousePosition();
     const transformedMousePosition: number = (mousePosition.x - ApplicationHelper.current.getWindowWidth() / 2);
 
+
     return (
         <React.Fragment>
 
@@ -28,12 +29,28 @@ export default function Home(): React.JSX.Element {
                 paddingTop: ApplicationHelper.current.homeScreenVerticalPadding,
             }} className={`min-h-screen max-h-screen w-screen flex justify-center`}>
 
-                <section
+                <motion.section
                     style={{
-                        width: ApplicationHelper.current.homeScreenElementWidth
-                    }} className={`flex flex-col items-center justify-center`}>
+                        width: ApplicationHelper.current.homeScreenElementWidth,
+                        marginTop: "5rem",
+                    }}
+                    initial={{
+                        filter: "blur(10px)",
+                        opacity: 0,
+                        y: 50
+                    }}
+                    animate={{
+                        filter: "blur(0px)",
+                        opacity: 1,
+                        y: 0
+                    }}
+                    transition={{
+                        duration: 0.75,
+                        delay: 0.5
+                    }}
+                    className={`flex flex-col items-center justify-start`}>
 
-                    <h1 className={`font-bold text-white/80 text-[2rem] text-center`}>A Complete Service For The Web.</h1>
+                    <h1 className={`font-bold text-white/80 text-[2rem] text-center`}>Your Complete Local Area Services</h1>
                     <h3 style={{ marginTop: "1rem"}} className={`font-semibold text-white/30 text-[1rem] text-center`}>Vercel provides the developer tools and cloud infrastructure</h3>
                     <h3 className={`font-semibold text-white/30 text-[1rem] text-center`}>to build, scale, and secure a faster, more personalized web.</h3>
 
@@ -43,7 +60,7 @@ export default function Home(): React.JSX.Element {
                         <ApplicationHomePageButton styles={{ background: ApplicationHelper.current.royalGoldenGrey, border: "0.75px solid rgba(255,255,255,10)"}} text={"Log In / Sign Up"} action={() => {}} />
                     </div>
 
-                </section>
+                </motion.section>
             </main>
         </React.Fragment>
     );
@@ -66,6 +83,6 @@ const ApplicationHomePageButton = ({styles, text, action}: ApplicationHelperType
         cursor: "pointer",
         opacity: 0.5
     }} style={stylesOptions}>
-        <h1>{text}</h1>
+        <h1 className={`font-medium`}>{text}</h1>
     </motion.div>
 }
