@@ -47,6 +47,12 @@ export namespace BaseModel {
         breakTime: string;
     }
 
+    enum ServiceState {
+        NotStarted,
+        OnGoing,
+        Ended
+    }
+
     interface Service {
         id: string;
         providerId: string;
@@ -56,7 +62,21 @@ export namespace BaseModel {
         locationType: LocationType;
         perHourRating: Number;
         image?: string;
-        timings: ServiceSlot;
-        
+        dateAndTimings: ServiceSlot;
+        serviceState: ServiceState;
+    }
+
+    enum RequestState {
+        Pending,
+        Accepted,
+        Rejected,
+        Failed
+    }
+
+    interface Request {
+        fromUserId: string;
+        toUserId: string;
+        forServiceId: string;
+        requestState: RequestState;
     }
 }
