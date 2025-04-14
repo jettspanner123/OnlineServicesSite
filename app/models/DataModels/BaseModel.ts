@@ -1,15 +1,16 @@
 export namespace BaseModel {
 
-    enum UserType {
+    export enum UserType {
         Customer, Provider, Admin
     }
-    enum LocationType {
+
+    export enum LocationType {
         AtHome,
         Outdoor,
         PersonalSpace
     }
 
-    interface UserLocation {
+    export interface UserLocation {
         district: string;
         city: string;
         state: string;
@@ -19,14 +20,14 @@ export namespace BaseModel {
         flat: string;
     }
 
-    interface ServiceLocation {
+    export interface ServiceLocation {
         state: string;
         district: string;
         city: string;
         area: string;
     }
 
-    interface User {
+    export interface User {
         id: string;
         name: string;
         username: string;
@@ -40,20 +41,20 @@ export namespace BaseModel {
         rating?: number;
     }
 
-    interface ServiceSlot {
+    export interface ServiceSlot {
         date: string;
         fromTime: string;
         toTime: string;
         breakTime: string;
     }
 
-    enum ServiceState {
+    export enum ServiceState {
         NotStarted,
         OnGoing,
         Ended
     }
 
-    interface Service {
+    export interface Service {
         id: string;
         providerId: string;
         name: string;
@@ -66,17 +67,26 @@ export namespace BaseModel {
         serviceState: ServiceState;
     }
 
-    enum RequestState {
+    export enum RequestState {
         Pending,
         Accepted,
         Rejected,
         Failed
     }
 
-    interface Request {
+    export interface Request {
         fromUserId: string;
         toUserId: string;
         forServiceId: string;
         requestState: RequestState;
+    }
+
+    export interface LoginStateObject {
+       email: string;
+       password: string;
+    }
+
+    export interface SignupStateObject {
+
     }
 }

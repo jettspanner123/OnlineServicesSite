@@ -3,6 +3,7 @@ import React from "react";
 import ApplicationThemeHelper, {ApplicationThemeStore} from "@/app/models/ThemeStore";
 import ApplicationNavigationBar from "@/app/components/ApplicationNavigationBar";
 import {ApplicationHelper, ApplicationHelperTypes} from "@/app/models/ApplicationHelper";
+import { BaseModel } from "@/app/models/DataModels/BaseModel"
 import { motion } from "motion/react";
 
 export default function Home(): React.JSX.Element {
@@ -12,7 +13,6 @@ export default function Home(): React.JSX.Element {
 
     const mousePosition: ApplicationHelperTypes.MousePosition = ApplicationHelper.current.getMousePosition();
     const transformedMousePosition: number = (mousePosition.x - ApplicationHelper.current.getWindowWidth() / 2);
-
 
     return (
         <React.Fragment>
